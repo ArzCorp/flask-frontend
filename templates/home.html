@@ -1,0 +1,5 @@
+{% if user_ip %}
+<h1>Home user ip = {{user_ip}}</h1>
+{% else %}
+<p>No tenemos tus datos registrados porfavor <a href="{{ url_for('index') }}">actualiaza tus datos</a></p>
+{% endif %}
