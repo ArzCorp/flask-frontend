@@ -1,8 +1,10 @@
+{% from 'macros.html' import render_title %}
 {% extends 'base.html' %}
 {% block title %}Inicio{% endblock %}
 {% block main %}
 {% if user_ip %}
-<h1>Home user ip = {{user_ip}}</h1>
+{{ render_title("Inicio") }}
+<p>Home user ip = {{user_ip}}</p>
 {% else %}
 <p>No tenemos tus datos registrados porfavor <a href="{{ url_for('index') }}">actualiaza tus datos</a></p>
 {% endif %}
