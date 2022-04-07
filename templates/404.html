@@ -1,0 +1,6 @@
+{% from 'macros.html' import render_title %}
+{% extends 'base.html' %}
+{% block title %}404{% endblock %}
+{% block main %}
+    {{ render_title('Página no encontrada') }}
+{% endblock %}
