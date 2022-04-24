@@ -1,4 +1,5 @@
-from flask import Flask, request, make_response, redirect, render_template, session
+from distutils.log import debug
+from flask import Flask, request, make_response, redirect, render_template, session, flash
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, EmailField, SubmitField
 from wtforms.validators import DataRequired, Email
@@ -34,7 +35,13 @@ def home():
 @app.route('/ingresar', methods=["POST", "GET"])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
-        return
-    response = render_template("login.html", form=form)
-    return response
+    if request.method == "GET":
+        response = render_template("login.html", form=form)
+        return response
+    else:
+        if form.validate_on_submit():
+            return make_response(redirect("/inicio"))
+        else:
+            flash("Verifica tus datos")
+            response = render_template("login.html", form=form)
+            return response
