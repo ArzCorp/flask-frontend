@@ -11,6 +11,7 @@ venv/
 env*
 dist/
 build/
+node_modules/
 *.egg
 *.egg-info/
 _mailinglist
