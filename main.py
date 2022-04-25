@@ -1,19 +1,9 @@
-from distutils.log import debug
-from flask import Flask, request, make_response, redirect, render_template, session, flash
-from flask_wtf import FlaskForm
-from wtforms.fields import StringField, PasswordField, EmailField, SubmitField
-from wtforms.validators import DataRequired, Email
+from flask import request, make_response, redirect, render_template, session, flash
 
-app = Flask('_name_')
+from app import create_app
+from app.forms import LoginForm
 
-app.config['SECRET_KEY'] = 'Osva-0807_App $'
-
-class LoginForm(FlaskForm):
-    username = StringField("Username", validators=[DataRequired(message="Requerido")])
-    email = EmailField("Correo electrónico", validators=[DataRequired(message="Requerido")])
-    password = PasswordField("Contraseña", validators=[DataRequired(message="Requerido")])
-    submit = SubmitField("Ingresar")
-
+app = create_app()
 
 @app.errorhandler(404)
 def not_found(error):
